@@ -15,4 +15,10 @@ class ReLibraryParser extends WordpressBaseParser {
     getInformationEpubItemChildNodes(dom) {
         return [...dom.querySelectorAll("#synopsis+div div.su-box-content")];
     }
+    
+    removeUnwantedElementsFromContentElement(element) {
+        util.removeChildElementsMatchingSelector(element, "div.PageLink, table#fixed:has(a[href*='scribblehub']), p:has(a[href='#respond'])");
+        super.removeUnwantedElementsFromContentElement(element);
+    }
+
 }
